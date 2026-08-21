@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         JAVLibrary增强版3.0
 // @namespace    http://tampermonkey.net/
-// @version      3.7.0
+// @version      3.7.2
 // @description  自动填充登录，串行防Cloudflare限速插图，单击大图独立大比例放大，双击磁力，划词独立多/单对象智能插图（精准划词修复版），新增MissAV搜索
 // @author       manxyf
-// @match        *://www.e100k.com/cn/*
+// @match        *://www.f101w.com/cn/*
 // @grant        none
 // @run-at       document-end
 // @updateURL    https://fastly.jsdelivr.net/gh/manxyf/autojav@main/script.user.js
