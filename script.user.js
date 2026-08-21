@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         JAVLibrary - 自动更新
 // @namespace    http://tampermonkey.net/
-// @version      3.7.3
+// @version      3.7.4
 // @description  
 // @author       manxyf
 // @match        *://www.f101w.com/cn/*
