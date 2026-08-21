@@ -7,8 +7,8 @@
 // @match        *://www.f101w.com/cn/*
 // @grant        none
 // @run-at       document-end
-// @updateURL    https://fastly.jsdelivr.net/gh/manxyf/autojav@main/script.user.js
-// @downloadURL  https://fastly.jsdelivr.net/gh/manxyf/autojav@main/script.user.js
+// @updateURL    https://raw.githubusercontent.com/manxyf/autojav/main/script.user.js
+// @downloadURL  https://raw.githubusercontent.com/manxyf/autojav/main/script.user.js
 // ==/UserScript==
 
 (function() {
