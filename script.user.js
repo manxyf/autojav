@@ -158,7 +158,7 @@
     magnetSearchBtn.addEventListener('click', () => {
         if (selectedText) {
             const base64Str = utf8ToBase64(selectedText);
-            const magnetUrl = `https://clm58.top/search?word=${base64Str}`;
+            const magnetUrl = `https://clm.cc/search?word=${base64Str}`;
             window.open(magnetUrl, '_blank');
             searchContainer.style.display = 'none';
         }
@@ -452,7 +452,7 @@
             e.preventDefault();
             // 双击逻辑：自动进行 Base64 编码转换并跳转磁力搜索
             const base64Str = utf8ToBase64(code);
-            const magnetUrl = `https://clm58.top/search?word=${base64Str}`;
+            const magnetUrl = `https://clm.cc/search?word=${base64Str}`;
             window.open(magnetUrl, '_blank');
         });
     }
