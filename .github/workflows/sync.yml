@@ -15,13 +15,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 步骤1 - 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5  # 升级至 v5 版本，完美适配 Node 24
 
     - name: 步骤2 - 配置 Python 环境
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6  # 升级至 v6 版本，完美适配 Node 24
+      with:
+        python-version: '3.x'      # 补上参数，指定使用 Python 3.x 版本
 
     - name: 步骤3 - 执行抓取脚本
       env:
+        # 将系统自带的密钥传递给 Python，用于解除 API 调用频率限制
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: python update.py
 
