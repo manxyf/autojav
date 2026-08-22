@@ -6,19 +6,22 @@ on:
     - cron: '0 14 * * *'
   workflow_dispatch:     # 支持手动点击测试运行
 
+# 必须声明此写入权限，以便能推送空提交
+permissions:
+  contents: write
+
 jobs:
   build_and_run:
     runs-on: ubuntu-latest
     steps:
     - name: 步骤1 - 检出代码
-      uses: actions/checkout@v4  # 升级至最新兼容的 v4 版本
+      uses: actions/checkout@v4
 
     - name: 步骤2 - 配置 Python 环境
-      uses: actions/setup-python@v5  # 升级至适配 Node 24 的 v5 版本
+      uses: actions/setup-python@v5
 
     - name: 步骤3 - 执行抓取脚本
       env:
-        # 将系统自带的密钥传递给 Python，用于解除 API 调用频率限制
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: python update.py
 
@@ -28,7 +31,21 @@ jobs:
         git config --local user.name "GitHub Action"
         git add domain.txt script.user.js
         if git diff --cached --quiet; then
-          echo "一切无变化，无需更新"
+          echo "域名无变化，开始检测是否需要兜底保活..."
+          
+          # 💡 核心保活逻辑：如果 50 天没有更新，自动执行一次空提交
+          last_commit_ts=$(git log -1 --format=%ct)
+          now_ts=$(date +%s)
+          day_diff=$(( (now_ts - last_commit_ts) / 86400 ))
+          echo "距离上次提交已过去：${day_diff} 天"
+          
+          if [ "$day_diff" -ge 50 ]; then
+            echo "已接近60天限制，正在执行空提交保活..."
+            git commit --allow-empty -m "chore: keepalive 兜底保活 [skip ci]"
+            git push
+          else
+            echo "尚未临近限制，无需保活。"
+          fi
         else
           git commit -m "自动同步最新域名与油猴脚本"
           git push
