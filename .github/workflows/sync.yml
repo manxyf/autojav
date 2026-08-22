@@ -11,12 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 步骤1 - 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4  # 升级至最新兼容的 v4 版本
 
     - name: 步骤2 - 配置 Python 环境
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      uses: actions/setup-python@v5  # 升级至适配 Node 24 的 v5 版本
 
     - name: 步骤3 - 执行抓取脚本
       env:
