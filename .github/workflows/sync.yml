@@ -6,11 +6,6 @@ on:
     - cron: '0 14 * * *'
   workflow_dispatch:     # 支持手动点击测试运行
 
-# 💡 新增：必须声明此权限，保活工作流才能在接近 60 天时自动刷新仓库状态
-permissions:
-  contents: write
-  actions: write
-
 jobs:
   build_and_run:
     runs-on: ubuntu-latest
@@ -40,7 +35,3 @@ jobs:
           git commit -m "自动同步最新域名与油猴脚本"
           git push
         fi
-
-    # 💡 核心新增：防止 60 天无更新导致定时任务被挂起
-    - name: 步骤5 - 自动保持定时任务活跃
-      uses: gautamkrishnar/keepalive-workflow@v2
