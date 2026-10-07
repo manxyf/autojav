@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         JAVLibrary - 自动更新
 // @namespace    http://tampermonkey.net/
-// @version      3.7.6
+// @version      3.7.56
 // @description  
 // @author       manxyf
-// @match        *://www.f101w.com/cn/*
+// @match        *://www.g102q.com/cn/*
 // @grant        none
 // @run-at       document-end
 // @updateURL    https://raw.githubusercontent.com/manxyf/autojav/main/script.user.js
